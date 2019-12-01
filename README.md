@@ -1,1 +1,1 @@
-Zabbix API - Automated Zabbix
+Automated zabbix with  python.
