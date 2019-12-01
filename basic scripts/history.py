@@ -9,7 +9,8 @@ history = zapi.history.get({
   ],
   "history": 0,
   "output": "extend",
-  "time_from": "1438387200",
-  "time_till": "1439250959"
+  "time_from": "1575216457",
+  "time_till": "1575216457"
 })
-print history
+for x in history:
+ print x["clock"], "- ", x["value"]

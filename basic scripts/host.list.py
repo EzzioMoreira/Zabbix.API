@@ -3,13 +3,23 @@
 from zabbix_api import ZabbixAPI
 zapi = ZabbixAPI(server="http://192.168.25.3")
 zapi.login("Admin", "zabbix")
+# Obtendo lista de hosts
 hosts = zapi.host.get({
  "output": [
-   "hostid",
-   "host"
- ],
- "sortfield": "host"
-
+  "hostid",
+  "name"
+ ]
 })
-for x in hosts:
- print x["hostid"], "- ", x["host"]
+
+# Obtendo lista de enderecos IPs
+interfaces = zapi.hostinterface.get ({
+ "output": [
+  "hostid",
+  "ip",
+  "type"
+ ]
+})
+for vetor_hosts in hosts:
+ for vetor_interfaces in interfaces:
+  if vertor_interfaces["hostid"] == vetor_hosts['hostid']:
+   print vetor_hosts['hostid'],vetor_hosts['name'],"- IP -",vetor_interfaces["ip"]," - Tipo de interface:", vetor_interfaces["type"]
